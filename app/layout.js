@@ -20,7 +20,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Crumble - Fresh Baked Cookies Delivered",
+  title: "Sugar & Swirl",
   description:
     "Experience the perfect cookie. Baked fresh daily with premium ingredients and delivered warm to your door.",
 };

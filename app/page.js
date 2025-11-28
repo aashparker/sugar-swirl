@@ -10,30 +10,32 @@ import {
     ClockIcon,
     TrophyIcon
 } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
-export default function CrumbleCookies() {
+
+export default function Home() {
     const cookies = [
         {
-            name: "Crumble Classic Chunk",
-            description: "Our signature browned butter dough loaded with Belgian dark & milk chocolate chunks",
+            name: "Cookie Monster",
+            description: "Loaded with Nestlé chocolate inside, drizzled on top, and finished with Oreo crumbs",
             price: "R30.00",
-            image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800&h=800&fit=crop&q=80&auto=format"
+            image: "/cookie-monster.jpg"
         },
         {
-            name: "Crumble Double Cocoa Core",
-            description: "Intense chocolate cookie with molten cocoa fudge swirls baked into the center",
+            name: "Bar One Drizzle",
+            description: "Rich chocolate cookie with Bar One pieces and a silky chocolate drizzle",
             price: "R30.00",
             image: "https://images.unsplash.com/photo-1588639079985-e72ff1073992?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
-            name: "Crumble Cookies & Cream",
-            description: "Creamy vanilla base packed with crushed chocolate sandwich biscuits & white choc",
+            name: "Nestlé Duo Drizzle",
+            description: "Milk chocolate cookie packed with Nestlé chunks, drizzled with white and milk Nestlé",
             price: "R30.00",
             image: "https://images.unsplash.com/photo-1519682214708-973477a2529a?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
-            name: "Crumble Velvet Cheesecake",
-            description: "Decadent red velvet cookie finished with a whipped cheesecake topping",
+            name: "Toasted Marshmallow",
+            description: "Soft-baked cookie with marshmallows roasted into the dough for gooey bites",
             price: "R30.00",
             image: "https://images.unsplash.com/photo-1690976991784-517d7763e0fa?q=80&w=927&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
@@ -44,9 +46,11 @@ export default function CrumbleCookies() {
             {/* Header */}
             <header className="border-b border-pink-100 sticky top-0 z-50 backdrop-blur-sm bg-white/90">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-20">
-                        <div className="flex items-center space-x-2">
-                            <span className="text-3xl font-black text-gray-900">Sugar & Swirl</span>
+                    <div className="flex items-center justify-between h-16 md:h-20">
+                        <div className="lg:py-5 flex items-center space-x-2">
+                            {/*<span className="text-3xl font-black text-gray-900">Sugar & Swirl</span>*/}
+                            <Image className='h-auto w-32 sm:w-36 md:w-44 lg:w-[200px]' src='/text-logo.svg'
+                                   height={200} width={200} alt='logo'/>
                         </div>
 
                         <nav className="hidden md:flex items-center space-x-8">
@@ -66,21 +70,23 @@ export default function CrumbleCookies() {
                             {/*<a href="#location" className="text-gray-700 hover:text-pink-400 transition-colors">*/}
                             {/*    <MapPinIcon className="w-5 h-5"/>*/}
                             {/*</a>*/}
-                            <button
-                                className="bg-pink-400 hover:bg-pink-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105">
-                                Order Now
-                            </button>
+                            <a href='#location'>
+                                <button
+                                    className="cursor-pointer bg-pink-400 hover:bg-pink-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105">
+                                    Order Now
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </header>
 
             {/* Hero Section */}
-            <section className="relative pt-12 pb-32 px-4 sm:px-6 lg:px-8">
+            <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 lg:pb-32 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
                         {/* Left Content */}
-                        <div className="text-center lg:text-left order-2 lg:order-1">
+                        <div className="text-center lg:text-left order-1 lg:order-1">
                             <div
                                 className="inline-flex items-center space-x-2 bg-pink-100 text-pink-600 px-4 py-2 rounded-full text-sm font-semibold mb-6 animate-bounce-slow">
                                 <span className="relative flex h-2 w-2">
@@ -91,7 +97,7 @@ export default function CrumbleCookies() {
                                 <span>Now taking pre-orders!</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                                 Freshly baked
                                 <span className="block text-pink-400">
                                     cookies
@@ -106,17 +112,17 @@ export default function CrumbleCookies() {
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                                 <a
-                                    href="#cookies"
+                                    href="#location"
                                     className="group bg-pink-400 hover:bg-pink-500 text-white px-8 py-4 rounded-full font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
                                     <ShoppingCartIcon className="w-5 h-5 group-hover:animate-bounce"/>
                                     <span>Pre-Order Now</span>
                                 </a>
-                                <a
-                                    href="#location"
-                                    className="group border-2 border-gray-300 hover:border-pink-400 hover:bg-pink-50 text-gray-700 hover:text-pink-600 px-8 py-4 rounded-full font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2">
-                                    <ClockIcon className="w-5 h-5"/>
-                                    <span>View Schedule</span>
-                                </a>
+                                {/*<a*/}
+                                {/*    href="#location"*/}
+                                {/*    className="group border-2 border-gray-300 hover:border-pink-400 hover:bg-pink-50 text-gray-700 hover:text-pink-600 px-8 py-4 rounded-full font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2">*/}
+                                {/*    <ClockIcon className="w-5 h-5"/>*/}
+                                {/*    <span>View Schedule</span>*/}
+                                {/*</a>*/}
                             </div>
 
                             {/* Social Proof */}
@@ -138,7 +144,7 @@ export default function CrumbleCookies() {
                         </div>
 
                         {/* Right Content - Hero Image */}
-                        <div className="order-1 lg:order-2">
+                        <div className="order-2 lg:order-2">
                             <div className="relative">
                                 {/* Main Image */}
                                 <div className="relative z-10 group">
@@ -150,7 +156,7 @@ export default function CrumbleCookies() {
 
                                     {/* Floating Badge 1 */}
                                     <div
-                                        className="absolute -top-6 -left-6 bg-white rounded-2xl shadow-xl p-4 animate-float">
+                                        className="hidden md:block absolute -top-6 -left-6 bg-white rounded-2xl shadow-xl p-4 animate-float">
                                         <div className="flex items-center space-x-3">
                                             <div
                                                 className="w-12 h-12 bg-pink-400 rounded-xl flex items-center justify-center">
@@ -165,7 +171,7 @@ export default function CrumbleCookies() {
 
                                     {/* Floating Badge 2 */}
                                     <div
-                                        className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-2000">
+                                        className="hidden md:block absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-2000">
                                         <div className="flex items-center space-x-3">
                                             <div
                                                 className="w-12 h-12 bg-pink-400 rounded-xl flex items-center justify-center">
@@ -243,6 +249,10 @@ export default function CrumbleCookies() {
                                     <img
                                         src={cookie.image}
                                         alt={cookie.name}
+                                        onError={(e) => {
+                                            e.currentTarget.onerror = null;
+                                            e.currentTarget.src = "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800&h=800&fit=crop&q=80&auto=format";
+                                        }}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                     />
                                     {/*<div className="absolute top-3 right-3">*/}
@@ -271,42 +281,42 @@ export default function CrumbleCookies() {
                     <div className="grid md:grid-cols-2 gap-16 items-center">
                         <div>
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                                Baking happiness since 2019
+                                Baking happiness since 2024
                             </h2>
                             <div className="space-y-4 text-gray-600 leading-relaxed">
                                 <p>
-                                    What started as a small passion project in a home kitchen has grown into something
-                                    we're incredibly proud of. Every cookie we make represents our commitment to quality
-                                    and our love for the craft.
+                                    Sugar and Swirl started as a small home-kitchen project and it's still proudly
+                                    small-batch.
+                                    Every cookie is made with care, using simple, quality ingredients and plenty of
+                                    love.
                                 </p>
                                 <p>
-                                    We believe the best cookies come from the best ingredients. That's why we source
-                                    premium chocolate, real butter, and fresh ingredients to create cookies that bring
-                                    joy to every bite.
+                                    We're growing one bake at a time—keeping things fresh, personal, and delicious.
+                                    If you're here early, thanks for being part of the journey!
                                 </p>
                             </div>
 
-                            {/*<div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-pink-100">*/}
-                            {/*    <div>*/}
-                            {/*        <div className="text-3xl font-bold text-pink-400 mb-1">50+</div>*/}
-                            {/*        <div className="text-sm text-gray-600">Cookie varieties</div>*/}
-                            {/*    </div>*/}
-                            {/*    <div>*/}
-                            {/*        <div className="text-3xl font-bold text-pink-400 mb-1">100+</div>*/}
-                            {/*        <div className="text-sm text-gray-600">Store locations</div>*/}
-                            {/*    </div>*/}
-                            {/*    <div>*/}
-                            {/*        <div className="text-3xl font-bold text-pink-400 mb-1">1M+</div>*/}
-                            {/*        <div className="text-sm text-gray-600">Happy customers</div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
+                            <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-pink-100">
+                                <div>
+                                    <div className="text-3xl font-bold text-pink-400 mb-1">4</div>
+                                    <div className="text-sm text-gray-600">Cookie flavours (so far)</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-bold text-pink-400 mb-1">1</div>
+                                    <div className="text-sm text-gray-600">Location</div>
+                                </div>
+                                <div>
+                                    <div className="text-3xl font-bold text-pink-400 mb-1">10+</div>
+                                    <div className="text-sm text-gray-600">Happy customers</div>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="relative">
                             <img
-                                src="https://images.unsplash.com/photo-1617470232113-0e07c7257f8f?w=800&h=1000&fit=crop&q=80&auto=format"
-                                alt="Stack of gourmet cookies"
-                                className="rounded-3xl w-full"
+                                src="https://images.unsplash.com/photo-1619115805622-aa28718e5abf?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Freshly baked homemade cookies on a cooling rack"
+                                className="rounded-3xl w-full h-200 md:h-150 object-cover"
                             />
                         </div>
                     </div>
@@ -377,11 +387,11 @@ export default function CrumbleCookies() {
                             <span>Order on WhatsApp</span>
                         </a>
                         {/* Changed to link to Location section */}
-                        <a href="#location"
-                           className="border-2 border-pink-400 hover:bg-pink-50 text-pink-500 px-8 py-4 rounded-full font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2">
-                            <MapPinIcon className="w-5 h-5"/>
-                            <span>How it works</span>
-                        </a>
+                        {/*<a href="#location"*/}
+                        {/*   className="border-2 border-pink-400 hover:bg-pink-50 text-pink-500 px-8 py-4 rounded-full font-bold transition-all hover:scale-105 flex items-center justify-center space-x-2">*/}
+                        {/*    <MapPinIcon className="w-5 h-5"/>*/}
+                        {/*    <span>How it works</span>*/}
+                        {/*</a>*/}
                     </div>
                 </div>
             </section>
@@ -389,7 +399,7 @@ export default function CrumbleCookies() {
             {/* Footer */}
             <footer id="contact" className="border-t border-pink-100 py-12 px-4 sm:px-6 lg:px-8 bg-pink-50">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-4 gap-12 mb-8">
+                    <div className="grid md:grid-cols-3 gap-12 mb-8">
                         <div>
                             <h3 className="font-bold text-gray-900 mb-4">About</h3>
                             <ul className="space-y-3">
@@ -397,17 +407,18 @@ export default function CrumbleCookies() {
                                     Story</a></li>
                             </ul>
                         </div>
-                        <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Support</h3>
-                            <ul className="space-y-3">
-                                <li><a href="#" className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Contact
-                                    Us</a>
-                                </li>
-                                {/*<li><a href="/allergens" className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Allergen*/}
-                                {/*    Info</a>*/}
-                                {/*</li>*/}
-                            </ul>
-                        </div>
+                        {/*<div>*/}
+                        {/*    <h3 className="font-bold text-gray-900 mb-4">Support</h3>*/}
+                        {/*    <ul className="space-y-3">*/}
+                        {/*        <li><a href="#" className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Contact*/}
+                        {/*            Us</a>*/}
+                        {/*        </li>*/}
+                        {/*        <li><a href="/allergens"*/}
+                        {/*               className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Allergen*/}
+                        {/*            Info</a>*/}
+                        {/*        </li>*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
                         <div>
                             <h3 className="font-bold text-gray-900 mb-4">Company</h3>
                             <ul className="space-y-3">
