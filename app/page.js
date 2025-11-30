@@ -41,6 +41,27 @@ export default function Home() {
         },
     ];
 
+    // Simple masking helpers
+    const maskPhone = (phone) => {
+        // Keep first 3 and last 3 digits, mask the middle
+        const digits = phone.replace(/\D/g, "");
+        if (digits.length < 7) return phone; // not enough digits, leave as-is
+        const first = digits.slice(0, 3);
+        const middleLen = Math.max(0, digits.length - 6);
+        const last = digits.slice(-3);
+        const maskedMiddle = "*".repeat(middleLen);
+        // Reconstruct with spaces similar to original style
+        return `${first} ${maskedMiddle.slice(0, 4)} ${last}`;
+    };
+
+    const maskEmail = (email) => {
+        const [user, domain] = email.split("@");
+        if (!domain) return email; // invalid email, leave as-is
+        const keep = Math.min(3, user.length);
+        const masked = "*".repeat(Math.max(2, user.length - keep));
+        return `${user.slice(0, keep)}${masked}@${domain}`;
+    };
+
     return (
         <div className="min-h-screen bg-white">
             {/* Header */}
@@ -49,7 +70,7 @@ export default function Home() {
                     <div className="flex items-center justify-between h-16 md:h-20">
                         <div className="lg:py-5 flex items-center space-x-2">
                             {/*<span className="text-3xl font-black text-gray-900">Sugar & Swirl</span>*/}
-                            <Image className='h-auto w-32 sm:w-36 md:w-44 lg:w-[200px]' src='/text-logo.svg'
+                            <Image className='h-auto w-46 sm:w-36 md:w-44 lg:w-[200px]' src='/text-logo.svg'
                                    height={200} width={200} alt='logo'/>
                         </div>
 
@@ -66,17 +87,17 @@ export default function Home() {
                                className="text-gray-700 hover:text-pink-400 text-sm font-semibold transition-colors">Contact</a>
                         </nav>
 
-                        <div className="flex items-center space-x-4">
-                            {/*<a href="#location" className="text-gray-700 hover:text-pink-400 transition-colors">*/}
-                            {/*    <MapPinIcon className="w-5 h-5"/>*/}
-                            {/*</a>*/}
-                            <a href='#location'>
-                                <button
-                                    className="cursor-pointer bg-pink-400 hover:bg-pink-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105">
-                                    Order Now
-                                </button>
-                            </a>
-                        </div>
+                        {/*<div className="flex items-center space-x-4">*/}
+                        {/*    /!*<a href="#location" className="text-gray-700 hover:text-pink-400 transition-colors">*!/*/}
+                        {/*    /!*    <MapPinIcon className="w-5 h-5"/>*!/*/}
+                        {/*    /!*</a>*!/*/}
+                        {/*    <a href='#location'>*/}
+                        {/*        <button*/}
+                        {/*            className="cursor-pointer bg-pink-400 hover:bg-pink-500 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105">*/}
+                        {/*            Order Now*/}
+                        {/*        </button>*/}
+                        {/*    </a>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </header>
@@ -407,41 +428,47 @@ export default function Home() {
                                     Story</a></li>
                             </ul>
                         </div>
-                        {/*<div>*/}
-                        {/*    <h3 className="font-bold text-gray-900 mb-4">Support</h3>*/}
-                        {/*    <ul className="space-y-3">*/}
-                        {/*        <li><a href="#" className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Contact*/}
-                        {/*            Us</a>*/}
-                        {/*        </li>*/}
-                        {/*        <li><a href="/allergens"*/}
-                        {/*               className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Allergen*/}
-                        {/*            Info</a>*/}
-                        {/*        </li>*/}
-                        {/*    </ul>*/}
-                        {/*</div>*/}
                         <div>
-                            <h3 className="font-bold text-gray-900 mb-4">Company</h3>
+                            <h3 className="font-bold text-gray-900 mb-4">Socials</h3>
                             <ul className="space-y-3">
-                                <li><a href="#"
-                                       className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Locations</a>
+                                <li>
+                                    <a href="https://www.instagram.com/sugarandswirl2025" target="_blank"
+                                       rel="noopener noreferrer"
+                                       className="flex items-center space-x-2 text-gray-600 hover:text-pink-400 text-sm transition-colors">
+                                        {/* Instagram logo SVG */}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                             className="w-4 h-4">
+                                            <path
+                                                d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm5.5-2a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+                                        </svg>
+                                        <span>@sugarandswirl2025</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
+                        {/*<div>*/}
+                        {/*    <h3 className="font-bold text-gray-900 mb-4">Company</h3>*/}
+                        {/*    <ul className="space-y-3">*/}
+                        {/*        <li><a href="#"*/}
+                        {/*               className="text-gray-600 hover:text-pink-400 text-sm transition-colors">Locations</a>*/}
+                        {/*        </li>*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
                         <div>
                             <h3 className="font-bold text-gray-900 mb-4">Contact</h3>
                             <ul className="space-y-3 text-sm text-gray-600">
                                 <li className="flex items-center space-x-2 hover:text-pink-400 transition-colors cursor-pointer">
                                     <PhoneIcon className="w-4 h-4"/>
-                                    <span>068 2796 536</span>
+                                    <span>{maskPhone('068 2796 536')}</span>
                                 </li>
                                 <li className="flex items-center space-x-2 hover:text-pink-400 transition-colors cursor-pointer">
                                     <EnvelopeIcon className="w-4 h-4"/>
-                                    <span>imaangabier24@gmail.com</span>
+                                    <span>{maskEmail('imaangabier24@gmail.com')}</span>
                                 </li>
-                                <li className="flex items-center space-x-2 hover:text-pink-400 transition-colors cursor-pointer">
-                                    <MapPinIcon className="w-4 h-4"/>
-                                    <span>Athlone, Cape Town</span>
-                                </li>
+                                {/*<li className="flex items-center space-x-2 hover:text-pink-400 transition-colors cursor-pointer">*/}
+                                {/*    <MapPinIcon className="w-4 h-4"/>*/}
+                                {/*    <span>Athlone, Cape Town</span>*/}
+                                {/*</li>*/}
                             </ul>
                         </div>
                     </div>
